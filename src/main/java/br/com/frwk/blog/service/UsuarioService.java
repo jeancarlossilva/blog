@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.frwk.blog.dto.UsuarioDTO;
 import br.com.frwk.blog.model.Usuario;
-import br.com.frwk.repository.UsuarioRepository;
+import br.com.frwk.blog.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {

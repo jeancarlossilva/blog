@@ -1,4 +1,4 @@
-package br.com.frwk.repository;
+package br.com.frwk.blog.repository;
 
 public interface PostRepository {
 

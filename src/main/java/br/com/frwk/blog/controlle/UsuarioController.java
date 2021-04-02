@@ -28,10 +28,11 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 
-	@PostMapping(value = "/{id}/movement")
-	public ResponseEntity<UsuarioDTO> createUsuario(
-			@ApiParam(value = "Id da partida a ser jogada.") @PathVariable String id,
-			@ApiParam(value = "Dados da partida a ser jogada.") @RequestBody UsuarioDTO partida) {
+	@PostMapping()
+	public ResponseEntity<UsuarioDTO> createUsuario(@RequestBody UsuarioDTO usuario) {
+		
+		usuarioService.createUsuario(usuario);
+		
 		return null;
 	}
 
