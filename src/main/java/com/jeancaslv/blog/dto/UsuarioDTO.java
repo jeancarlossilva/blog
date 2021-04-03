@@ -1,4 +1,4 @@
-package br.com.frwk.blog.dto;
+package com.jeancaslv.blog.dto;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;

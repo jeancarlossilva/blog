@@ -1,4 +1,4 @@
-package br.com.frwk.blog.controlle;
+package com.jeancaslv.blog.controlle;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.frwk.blog.dto.PostDTO;
-import br.com.frwk.blog.service.PostService;
-import br.com.frwk.blog.service.UsuarioService;
+import com.jeancaslv.blog.dto.PostDTO;
+import com.jeancaslv.blog.service.PostService;
+import com.jeancaslv.blog.service.UsuarioService;
 
 @RestController
 @RequestMapping("post")

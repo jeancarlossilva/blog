@@ -1,4 +1,4 @@
-package br.com.frwk.blog.service;
+package com.jeancaslv.blog.service;
 
 import java.time.ZonedDateTime;
 
@@ -7,11 +7,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import br.com.frwk.blog.dto.UsuarioDTO;
-import br.com.frwk.blog.exception.UsuarioExisteException;
-import br.com.frwk.blog.model.Usuario;
-import br.com.frwk.blog.repository.UsuarioRepository;
-import br.com.frwk.blog.service.mapper.UsuarioMapper;
+import com.jeancaslv.blog.dto.UsuarioDTO;
+import com.jeancaslv.blog.exception.UsuarioExisteException;
+import com.jeancaslv.blog.model.Usuario;
+import com.jeancaslv.blog.repository.UsuarioRepository;
+import com.jeancaslv.blog.service.mapper.UsuarioMapper;
 
 @Service
 public class UsuarioService {

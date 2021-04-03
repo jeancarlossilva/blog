@@ -1,12 +1,12 @@
-package br.com.frwk.blog.service.mapper;
+package com.jeancaslv.blog.service.mapper;
 
 import java.util.List;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import br.com.frwk.blog.dto.PostDTO;
-import br.com.frwk.blog.model.Post;
+import com.jeancaslv.blog.dto.PostDTO;
+import com.jeancaslv.blog.model.Post;
 
 @Mapper(componentModel = "spring")
 public abstract class PostMapper {

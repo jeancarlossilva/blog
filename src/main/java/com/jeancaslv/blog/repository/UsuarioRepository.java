@@ -1,10 +1,11 @@
-package br.com.frwk.blog.repository;
+package com.jeancaslv.blog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-import br.com.frwk.blog.model.Usuario;
+import com.jeancaslv.blog.model.Usuario;
+
 import java.lang.String;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.com.frwk.blog.service;
+package com.jeancaslv.blog.service;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.frwk.blog.dto.PostDTO;
-import br.com.frwk.blog.repository.PostRepository;
-import br.com.frwk.blog.service.mapper.PostMapper;
+import com.jeancaslv.blog.dto.PostDTO;
+import com.jeancaslv.blog.repository.PostRepository;
+import com.jeancaslv.blog.service.mapper.PostMapper;
 
 @Service
 public class PostService {

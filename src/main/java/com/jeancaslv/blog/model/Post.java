@@ -1,4 +1,4 @@
-package br.com.frwk.blog.model;
+package com.jeancaslv.blog.model;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;

@@ -1,4 +1,4 @@
-package br.com.frwk.blog.controlle;
+package com.jeancaslv.blog.controlle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.frwk.blog.dto.ComentarioDTO;
-import br.com.frwk.blog.service.ComentarioService;
+import com.jeancaslv.blog.dto.ComentarioDTO;
+import com.jeancaslv.blog.service.ComentarioService;
 
 @RestController
 @RequestMapping("comentario")

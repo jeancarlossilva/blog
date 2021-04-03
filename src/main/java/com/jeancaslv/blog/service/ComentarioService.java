@@ -1,14 +1,14 @@
-package br.com.frwk.blog.service;
+package com.jeancaslv.blog.service;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import br.com.frwk.blog.dto.ComentarioDTO;
-import br.com.frwk.blog.dto.PostDTO;
-import br.com.frwk.blog.repository.ComentarioRepository;
-import br.com.frwk.blog.service.mapper.ComentarioMapper;
-import br.com.frwk.blog.service.mapper.PostMapper;
+import com.jeancaslv.blog.dto.ComentarioDTO;
+import com.jeancaslv.blog.dto.PostDTO;
+import com.jeancaslv.blog.repository.ComentarioRepository;
+import com.jeancaslv.blog.service.mapper.ComentarioMapper;
+import com.jeancaslv.blog.service.mapper.PostMapper;
 
 @Service
 public class ComentarioService {
@@ -19,6 +19,7 @@ public class ComentarioService {
 		this.comentarioRepository = comentarioRepository;
 	}
 	
+	@Transactional
 	public void createComentario(ComentarioDTO comentarioDTO) {
 		this.comentarioRepository.save(ComentarioMapper.INSTANCE.toComentario(comentarioDTO));
 	}

@@ -1,12 +1,9 @@
-package br.com.frwk.blog.dto;
+package com.jeancaslv.blog.dto;
 
 import java.io.Serializable;
 
 public class ComentarioDTO implements Serializable  {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6098531562261847161L;
 	
 	private Long id;

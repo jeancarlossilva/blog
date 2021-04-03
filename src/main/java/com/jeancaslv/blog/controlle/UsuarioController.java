@@ -1,4 +1,4 @@
-package br.com.frwk.blog.controlle;
+package com.jeancaslv.blog.controlle;
 
 
 import org.slf4j.Logger;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.frwk.blog.dto.UsuarioDTO;
-import br.com.frwk.blog.exception.UsuarioExisteException;
-import br.com.frwk.blog.service.UsuarioService;
+import com.jeancaslv.blog.dto.UsuarioDTO;
+import com.jeancaslv.blog.exception.UsuarioExisteException;
+import com.jeancaslv.blog.service.UsuarioService;
 
 @RestController
 @RequestMapping("usuario")

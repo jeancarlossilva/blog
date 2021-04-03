@@ -1,10 +1,10 @@
-package br.com.frwk.blog.service.mapper;
+package com.jeancaslv.blog.service.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import br.com.frwk.blog.dto.UsuarioDTO;
-import br.com.frwk.blog.model.Usuario;
+import com.jeancaslv.blog.dto.UsuarioDTO;
+import com.jeancaslv.blog.model.Usuario;
 
 @Mapper(componentModel = "spring")
 public abstract class UsuarioMapper {

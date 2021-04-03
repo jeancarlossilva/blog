@@ -1,4 +1,4 @@
-package br.com.frwk.blog.exception;
+package com.jeancaslv.blog.exception;
 
 public class UsuarioExisteException extends Exception {
 
