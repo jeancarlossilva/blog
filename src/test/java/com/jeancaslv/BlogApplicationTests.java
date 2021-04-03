@@ -1,4 +1,4 @@
-package br.com.frwk;
+package com.jeancaslv;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
