@@ -10,7 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,20 +27,20 @@ public class Post implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "ID")
+	@Column(name = "ID_POST")
 	private Long id;
 	
-	@Column(name = "TEXTO")
+	@Column(name = "TEXTO", nullable = false)
 	private String texto;
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private List<Comentario> comentario;
+	private List<Comentario> comentarios;
 	
-	@Column(name = "ID_USUARIO", nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO", nullable = false)
     @NotNull
-	private Usuario usario;
+	private Usuario usuario;
 	
-	@JsonIgnore
     @Column(name = "DAT_CRIACAO")
     private ZonedDateTime dataCriacao;
 
@@ -57,22 +60,29 @@ public class Post implements Serializable {
 		this.texto = texto;
 	}
 
-	public List<Comentario> getComentario() {
-		return comentario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setComentario(List<Comentario> comentario) {
-		this.comentario = comentario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public Usuario getUsario() {
-		return usario;
+	public List<Comentario> getComentarios() {
+		return comentarios;
 	}
 
-	public void setUsario(Usuario usario) {
-		this.usario = usario;
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
 	}
-	
+
+	public ZonedDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(ZonedDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
 	
 
 }

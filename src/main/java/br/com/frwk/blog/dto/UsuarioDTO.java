@@ -1,6 +1,7 @@
 package br.com.frwk.blog.dto;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 
 public class UsuarioDTO implements Serializable{
 
@@ -10,9 +11,11 @@ public class UsuarioDTO implements Serializable{
 	
 	private String nome;
 	
-	private String nickname;
+	private String email;
 	
 	private String senha;
+	
+	private ZonedDateTime dataCriacao;
 
 	public Long getId() {
 		return id;
@@ -30,12 +33,12 @@ public class UsuarioDTO implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {
@@ -45,8 +48,14 @@ public class UsuarioDTO implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
+
+	public ZonedDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(ZonedDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
 	
 	
 

@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class Comentario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
+	@Column(name = "ID_COMENTARIO")
 	private Long id;
 	
 	@Column(name = "COMENTARIO")
@@ -34,12 +35,10 @@ public class Comentario implements Serializable {
     @JoinColumn(name = "ID_POST")
 	private Post post;
 	
-	
-	@Column(name = "ID_USUARIO", nullable = false)
+	@Column(name = "ID_USUARIO")
     @NotNull
 	private Usuario usario;
 	
-	@JsonIgnore
     @Column(name = "DAT_CRIACAO")
     private ZonedDateTime dataCriacao;
 

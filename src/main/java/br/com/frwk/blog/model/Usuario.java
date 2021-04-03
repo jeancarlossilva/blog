@@ -2,16 +2,16 @@ package br.com.frwk.blog.model;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "USUARIO")
@@ -22,21 +22,23 @@ public class Usuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "ID")
+	@Column(name = "ID_USUARIO")
 	private Long id;
 	
-	@Column(name = "NOME")
+	@Column(name = "NOME", nullable = false)
 	private String nome;
 	
-	@Column(name = "NICKNAME")
-	private String nickname;
+	@Column(name = "EMAIL", unique = true, nullable = false)
+	private String email;
 	
-	@Column(name  = "SENHA")
+	@Column(name  = "SENHA", nullable = false)
 	private String senha;
 	
-	@JsonIgnore
     @Column(name = "DAT_CRIACAO")
     private ZonedDateTime dataCriacao;
+    
+    @OneToMany(mappedBy = "usuario")
+    private List<Post> posts;
 
 	public Long getId() {
 		return id;
@@ -54,16 +56,29 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public ZonedDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(ZonedDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
 	
 
 }
