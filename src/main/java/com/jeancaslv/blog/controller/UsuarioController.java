@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jeancaslv.blog.dto.UsuarioDTO;
-import com.jeancaslv.blog.exception.UsuarioExisteException;
+import com.jeancaslv.blog.exception.CustomException;
 import com.jeancaslv.blog.service.UsuarioService;
 
 @RestController
@@ -31,7 +31,7 @@ public class UsuarioController {
 		try {
 			usuarioService.createUsuario(usuario);
 			return new ResponseEntity<>(HttpStatus.OK);
-		} catch (UsuarioExisteException e) {
+		} catch (CustomException e) {
 			log.error("Erro: " + e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
@@ -43,7 +43,7 @@ public class UsuarioController {
 	public ResponseEntity<String> login(@RequestBody UsuarioDTO usuario) {
 		try {
 			return new ResponseEntity<>(usuarioService.login(usuario),HttpStatus.OK);
-		} catch (UsuarioExisteException e) {
+		} catch (CustomException e) {
 			log.error("Erro: " + e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}

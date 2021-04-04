@@ -8,17 +8,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jeancaslv.blog.dto.PostDTO;
+import com.jeancaslv.blog.exception.CustomException;
 import com.jeancaslv.blog.service.PostService;
-import com.jeancaslv.blog.service.UsuarioService;
 
 @RestController
 @RequestMapping("post")
@@ -33,28 +34,35 @@ public class PostController {
 	}
 	
 	@PostMapping
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@Secured("ROLE_ADMIN")
 	public ResponseEntity<String> createPost(@RequestBody PostDTO postDTO){
 		this.postService.createPost(postDTO);
 		
 		return null;
 	}
 	
+	@DeleteMapping(path = "/{id}")
+	@Secured("ROLE_ADMIN")
+	public ResponseEntity<String>deletePost(@PathVariable Long id){
+		try {
+			postService.deletePost(id);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (CustomException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
+		}
 	
-	@DeleteMapping
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public ResponseEntity<String>deletePost(){
-		return null;
 	}
 	
-	@PostMapping(value = "/filter")
+	@PostMapping(path = "/filter")
+	@Secured("ROLE_ADMIN")
 	public ResponseEntity<Page<PostDTO>> filter(@RequestBody Pageable pageable ){
 		
 		return new ResponseEntity<>(postService.filter(pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@Secured("ROLE_ADMIN")
 	public ResponseEntity<List<PostDTO>> getAllPosts(){
 		return new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
 	}

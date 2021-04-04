@@ -13,7 +13,7 @@ import org.springframework.util.ObjectUtils;
 
 import com.jeancaslv.blog.dto.UsuarioDTO;
 import com.jeancaslv.blog.enumeration.Role;
-import com.jeancaslv.blog.exception.UsuarioExisteException;
+import com.jeancaslv.blog.exception.CustomException;
 import com.jeancaslv.blog.model.Usuario;
 import com.jeancaslv.blog.repository.UsuarioRepository;
 import com.jeancaslv.blog.security.JwtTokenProvider;
@@ -42,7 +42,7 @@ public class UsuarioService {
 		this.authenticationManager = authenticationManager;
 	}
 	
-	public void createUsuario(UsuarioDTO usuarioDTO) throws UsuarioExisteException {
+	public void createUsuario(UsuarioDTO usuarioDTO) throws CustomException {
 		
 		validaUsuarioExistente(usuarioDTO);
 		Usuario usuario = UsuarioMapper.INSTANCE.toUsuario(usuarioDTO);
@@ -53,17 +53,17 @@ public class UsuarioService {
 				
 	}
 
-	private void validaUsuarioExistente(UsuarioDTO usuarioDTO) throws UsuarioExisteException {
+	private void validaUsuarioExistente(UsuarioDTO usuarioDTO) throws CustomException {
 		
 	   Usuario usuario = getUsarioEmail(usuarioDTO.getEmail());
 		
 		if(!ObjectUtils.isEmpty(usuario)) {
-			throw new UsuarioExisteException("Usuário já existe no blog!");
+			throw new CustomException("Usuário já existe no blog!");
 		}
 		
 	}
 
-	public String login(UsuarioDTO usuarioDTO) throws UsuarioExisteException {
+	public String login(UsuarioDTO usuarioDTO) throws CustomException {
 		try {
 		      		
 		      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuarioDTO.getEmail(), usuarioDTO.getSenha()));

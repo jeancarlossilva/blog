@@ -3,15 +3,14 @@ package com.jeancaslv.blog.service;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import com.jeancaslv.blog.dto.ComentarioDTO;
-import com.jeancaslv.blog.dto.PostDTO;
-import com.jeancaslv.blog.exception.ComentarioNaoExiste;
+import com.jeancaslv.blog.exception.CustomException;
 import com.jeancaslv.blog.model.Comentario;
+import com.jeancaslv.blog.model.Usuario;
 import com.jeancaslv.blog.repository.ComentarioRepository;
 import com.jeancaslv.blog.service.mapper.ComentarioMapper;
-import com.jeancaslv.blog.service.mapper.PostMapper;
+import com.jeancaslv.blog.util.UsuarioUtil;
 
 @Service
 public class ComentarioService {
@@ -27,25 +26,28 @@ public class ComentarioService {
 		this.comentarioRepository.save(ComentarioMapper.INSTANCE.toComentario(comentarioDTO));
 	}
 	
-	@Transactional
-	public void deleteComentario(Long id) throws ComentarioNaoExiste {
+	
+	public void deleteComentario(Long id) throws CustomException {
 		
-		Comentario comentario = getComentario(id);
+		Comentario comentario = findByIdOrException(id);
+		Usuario usuario = comentario.getUsuario();
 		
-		if(ObjectUtils.isEmpty(comentario)) {
-			throw new ComentarioNaoExiste("Comentario nao exite");
+		String usuarioLogado = UsuarioUtil.getUsuarioLogado();
+		
+		if(!usuario.getEmail().equals(usuarioLogado)){
+			throw new CustomException("Usuario não possui permissao para excluir. Somente o criador pode.");
 		}
 		
-		//pegar o usuairo logado
+		this.comentarioRepository.delete(comentario);
 		
 		
 	}
 	
-	private Comentario getComentario(Long id) {
-		return comentarioRepository.findById(id).get();
-	}
+	 public Comentario findByIdOrException(Long id) throws CustomException {
+	        return comentarioRepository.findById(id)
+	                .orElseThrow(() -> new CustomException("Comentario não encontrado"));
+	 }
 
-	
 	
 
 }
