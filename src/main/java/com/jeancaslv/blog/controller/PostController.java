@@ -35,10 +35,9 @@ public class PostController {
 	
 	@PostMapping
 	@Secured("ROLE_ADMIN")
-	public ResponseEntity<String> createPost(@RequestBody PostDTO postDTO){
+	public ResponseEntity<Void> createPost(@RequestBody PostDTO postDTO){
 		this.postService.createPost(postDTO);
-		
-		return null;
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping(path = "/{id}")

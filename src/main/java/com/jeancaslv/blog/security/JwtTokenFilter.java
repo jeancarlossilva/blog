@@ -32,6 +32,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 	      httpServletResponse.sendError(400, ex.getMessage());
 	      return;
 	    }
+	    
+	    httpServletResponse.addHeader("Access-Control-Allow-Origin", "*");
 
 	    filterChain.doFilter(httpServletRequest, httpServletResponse);
 	  } 	

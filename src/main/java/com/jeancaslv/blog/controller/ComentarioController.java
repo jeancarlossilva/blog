@@ -34,9 +34,9 @@ public class ComentarioController {
 	
 	@PostMapping
 	@Secured("ROLE_ADMIN")
-	public ResponseEntity<String> createComentario(@RequestBody ComentarioDTO comentarioDTO){
+	public ResponseEntity<Void> createComentario(@RequestBody ComentarioDTO comentarioDTO){
 		comentarioService.createComentario(comentarioDTO);
-		return  new ResponseEntity<String>("OK", HttpStatus.OK);
+		return  new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping(path = "/{id}")
