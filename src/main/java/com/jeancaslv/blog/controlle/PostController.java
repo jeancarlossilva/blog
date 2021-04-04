@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,7 @@ public class PostController {
 	}
 	
 	@PostMapping
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String> createPost(@RequestBody PostDTO postDTO){
 		this.postService.createPost(postDTO);
 		
@@ -40,6 +42,7 @@ public class PostController {
 	
 	
 	@DeleteMapping
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<String>deletePost(){
 		return null;
 	}
@@ -51,6 +54,7 @@ public class PostController {
 	}
 	
 	@GetMapping
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public ResponseEntity<List<PostDTO>> getAllPosts(){
 		return new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
 	}

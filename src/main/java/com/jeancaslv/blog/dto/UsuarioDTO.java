@@ -2,6 +2,9 @@ package com.jeancaslv.blog.dto;
 
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.List;
+
+import com.jeancaslv.blog.model.Post;
 
 public class UsuarioDTO implements Serializable{
 
@@ -14,6 +17,8 @@ public class UsuarioDTO implements Serializable{
 	private String email;
 	
 	private String senha;
+	
+	private List<PostDTO> posts;
 	
 	private ZonedDateTime dataCriacao;
 
@@ -56,7 +61,14 @@ public class UsuarioDTO implements Serializable{
 	public void setDataCriacao(ZonedDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
-	
-	
+
+	public List<PostDTO> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<PostDTO> posts) {
+		this.posts = posts;
+	}
+
 
 }

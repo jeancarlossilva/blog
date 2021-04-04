@@ -32,12 +32,13 @@ public class Comentario implements Serializable {
 	
 	@ManyToOne
 	@NotNull
-    @JoinColumn(name = "ID_POST")
+    @JoinColumn(name = "ID_POST", nullable = false)
 	private Post post;
 	
-	@Column(name = "ID_USUARIO")
+	@ManyToOne
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO", nullable = false)
     @NotNull
-	private Usuario usario;
+	private Usuario usuario;
 	
     @Column(name = "DAT_CRIACAO")
     private ZonedDateTime dataCriacao;
@@ -66,12 +67,12 @@ public class Comentario implements Serializable {
 		this.post = post;
 	}
 
-	public Usuario getUsario() {
-		return usario;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setUsario(Usuario usario) {
-		this.usario = usario;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public ZonedDateTime getDataCriacao() {

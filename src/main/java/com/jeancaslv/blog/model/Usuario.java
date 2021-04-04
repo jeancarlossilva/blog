@@ -5,12 +5,16 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.jeancaslv.blog.enumeration.Role;
 
 
 @Entity
@@ -39,6 +43,9 @@ public class Usuario implements Serializable {
     
     @OneToMany(mappedBy = "usuario")
     private List<Post> posts;
+    
+    @ElementCollection(fetch = FetchType.EAGER)
+    List<Role> roles;
 
 	public Long getId() {
 		return id;
@@ -79,6 +86,24 @@ public class Usuario implements Serializable {
 	public void setDataCriacao(ZonedDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
+	
 	
 
 }

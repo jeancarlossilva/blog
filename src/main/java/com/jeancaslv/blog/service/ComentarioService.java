@@ -3,9 +3,12 @@ package com.jeancaslv.blog.service;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import com.jeancaslv.blog.dto.ComentarioDTO;
 import com.jeancaslv.blog.dto.PostDTO;
+import com.jeancaslv.blog.exception.ComentarioNaoExiste;
+import com.jeancaslv.blog.model.Comentario;
 import com.jeancaslv.blog.repository.ComentarioRepository;
 import com.jeancaslv.blog.service.mapper.ComentarioMapper;
 import com.jeancaslv.blog.service.mapper.PostMapper;
@@ -25,9 +28,21 @@ public class ComentarioService {
 	}
 	
 	@Transactional
-	public void deleteComentario(ComentarioDTO comentarioDTO) {
-		//aplicar regra
-		this.comentarioRepository.delete(ComentarioMapper.INSTANCE.toComentario(comentarioDTO));
+	public void deleteComentario(Long id) throws ComentarioNaoExiste {
+		
+		Comentario comentario = getComentario(id);
+		
+		if(ObjectUtils.isEmpty(comentario)) {
+			throw new ComentarioNaoExiste("Comentario nao exite");
+		}
+		
+		//pegar o usuairo logado
+		
+		
+	}
+	
+	private Comentario getComentario(Long id) {
+		return comentarioRepository.findById(id).get();
 	}
 
 	

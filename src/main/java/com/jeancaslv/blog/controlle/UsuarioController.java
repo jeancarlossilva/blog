@@ -38,5 +38,17 @@ public class UsuarioController {
 		
 		
 	}
+	
+	@PostMapping(value = "/login")
+	public ResponseEntity<String> login(@RequestBody UsuarioDTO usuario) {
+		try {
+			return new ResponseEntity<>(usuarioService.login(usuario),HttpStatus.OK);
+		} catch (UsuarioExisteException e) {
+			log.error("Erro: " + e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		
+		
+	}
 
 }
