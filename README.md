@@ -52,6 +52,8 @@ Foi usuado o framework MapStruct para mapear os DTOs
 
 O serviço é compilado com o maven
 
+Quando o serviço é iniciado, ele cria automaticamente as tabelas do banco de dados
+
 ```
 clean install
 ```
