@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.jeancaslv.blog.model.Usuario;
 
 import java.lang.String;
-import java.util.List;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>, JpaSpecificationExecutor<Usuario> {

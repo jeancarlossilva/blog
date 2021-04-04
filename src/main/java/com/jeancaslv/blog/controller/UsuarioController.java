@@ -1,4 +1,4 @@
-package com.jeancaslv.blog.controlle;
+package com.jeancaslv.blog.controller;
 
 
 import org.slf4j.Logger;
