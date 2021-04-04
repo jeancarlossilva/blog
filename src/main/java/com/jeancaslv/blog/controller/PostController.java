@@ -34,14 +34,14 @@ public class PostController {
 	}
 	
 	@PostMapping
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<Void> createPost(@RequestBody PostDTO postDTO){
 		this.postService.createPost(postDTO);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<String>deletePost(@PathVariable Long id){
 		try {
 			postService.deletePost(id);
@@ -54,14 +54,14 @@ public class PostController {
 	}
 	
 	@PostMapping(path = "/filter")
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<Page<PostDTO>> filter(@RequestBody Pageable pageable ){
 		
 		return new ResponseEntity<>(postService.filter(pageable), HttpStatus.OK);
 	}
 	
 	@GetMapping
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<List<PostDTO>> getAllPosts(){
 		return new ResponseEntity<>(postService.getAllPosts(), HttpStatus.OK);
 	}

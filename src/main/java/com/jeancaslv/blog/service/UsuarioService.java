@@ -48,7 +48,7 @@ public class UsuarioService {
 		Usuario usuario = UsuarioMapper.INSTANCE.toUsuario(usuarioDTO);
 		usuario.setDataCriacao(ZonedDateTime.now());
 		usuario.setSenha(passwordEncoder().encode(usuarioDTO.getSenha()));
-		usuario.setRoles(Arrays.asList(Role.ROLE_ADMIN));
+		usuario.setRoles(Arrays.asList(Role.ROLE_CLIENT));
 		usuarioRepository.save(usuario);
 				
 	}

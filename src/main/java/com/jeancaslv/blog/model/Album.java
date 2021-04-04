@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,29 +19,32 @@ import javax.persistence.Table;
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "POST")
-public class Post implements Serializable {
+@Table(name = "ALBUM")
+public class Album implements Serializable {
 
-	private static final long serialVersionUID = -1870587403054742885L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7442585319034510822L;
 	
 	@Id
-	@GeneratedValue
-	@Column(name = "ID_POST")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID_ALBUM")
 	private Long id;
 	
-	@Column(name = "TEXTO", nullable = false)
-	private String texto;
-	
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-	private List<Comentario> comentarios;
+	@Column(name = "TITULO")
+	private String titulo;
 	
 	@ManyToOne
     @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO", nullable = false)
     @NotNull
 	private Usuario usuario;
 	
-    @Column(name = "DAT_CRIACAO")
-    private ZonedDateTime dataCriacao;
+	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+	private List<Foto> fotos;
+	
+	@Column(name = "DAT_CRIACAO")
+	private ZonedDateTime dataCriacao;
 
 	public Long getId() {
 		return id;
@@ -50,12 +54,12 @@ public class Post implements Serializable {
 		this.id = id;
 	}
 
-	public String getTexto() {
-		return texto;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public Usuario getUsuario() {
@@ -66,12 +70,12 @@ public class Post implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public List<Comentario> getComentarios() {
-		return comentarios;
+	public List<Foto> getFotos() {
+		return fotos;
 	}
 
-	public void setComentarios(List<Comentario> comentarios) {
-		this.comentarios = comentarios;
+	public void setFotos(List<Foto> fotos) {
+		this.fotos = fotos;
 	}
 
 	public ZonedDateTime getDataCriacao() {
@@ -81,6 +85,10 @@ public class Post implements Serializable {
 	public void setDataCriacao(ZonedDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
+	
+	
+	
+	
 	
 
 }

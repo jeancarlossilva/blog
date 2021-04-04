@@ -44,6 +44,9 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario")
     private List<Post> posts;
     
+    @OneToMany(mappedBy = "usuario")
+    private List<Album> albuns;
+    
     @ElementCollection(fetch = FetchType.EAGER)
     List<Role> roles;
 
@@ -101,6 +104,14 @@ public class Usuario implements Serializable {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public List<Album> getAlbuns() {
+		return albuns;
+	}
+
+	public void setAlbuns(List<Album> albuns) {
+		this.albuns = albuns;
 	}
 	
 	

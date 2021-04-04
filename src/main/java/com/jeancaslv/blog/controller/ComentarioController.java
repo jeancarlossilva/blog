@@ -33,14 +33,14 @@ public class ComentarioController {
 	}
 	
 	@PostMapping
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<Void> createComentario(@RequestBody ComentarioDTO comentarioDTO){
 		comentarioService.createComentario(comentarioDTO);
 		return  new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping(path = "/{id}")
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<String>deleteComentario(@PathVariable Long id){
 		try {
 			comentarioService.deleteComentario(id);
@@ -52,7 +52,7 @@ public class ComentarioController {
 	}
 	
 	@GetMapping(path = "/{id}")
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_CLIENT")
 	public ResponseEntity<List<ComentarioDTO>> getComentariosPost(){
 		return null;
 		
